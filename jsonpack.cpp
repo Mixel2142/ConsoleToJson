@@ -5,7 +5,7 @@ JsonPack::JsonPack(QObject *parent) : QObject(parent)
     JsonObjArrayMain = json_object_new_object();
 
     JsonObjArraySub.emplace_back();
-    JsonObjArraySub.at(0) = json_object_new_array();
+    JsonObjArraySub.back() = json_object_new_array();
 }
 
 JsonPack::~JsonPack()

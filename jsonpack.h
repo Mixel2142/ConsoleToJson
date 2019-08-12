@@ -20,7 +20,7 @@ public:
 
 private:
      json_object* JsonObjArrayMain;
-     std::vector<json_object*> JsonObjArraySub;
+     std::list<json_object*> JsonObjArraySub;
 };
 
 #endif // JSONPACK_H
