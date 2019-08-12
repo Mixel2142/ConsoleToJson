@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
                 break;
 
             buildJson( JsonObjArrayMain, JsonObjArraySub.at(countSubArray), str);
-
+            JsonObjArraySub.emplace_back();
             countSubArray++;
         }
     }//while
