@@ -14,15 +14,12 @@ int main(int argc, char *argv[])
     cout << "После того, как вы введёте команду EXIT и нажмёте Enter,"<<endl;
     cout << "на экране появится массив в формате JSON."<<endl;
 
-    char* input_line = nullptr;
-    json_object* JsonObjArrayMain = json_object_new_object();
+    JsonPack JsonP;
 
-    vector<json_object*> JsonObjArraySub(5);
+    char* input_line = nullptr;
 
     while (1) {
         input_line = readline("Ввод> ");
-
-        static vector<json_object*>::size_type countSubArray = 0;
 
         if (*input_line != NULL ) {
             add_history(input_line);
@@ -36,19 +33,12 @@ int main(int argc, char *argv[])
             if (isExit(str))
                 break;
 
-            buildJson( JsonObjArrayMain, JsonObjArraySub.at(countSubArray), str);
-            JsonObjArraySub.emplace_back();
-            countSubArray++;
+            buildJson(JsonP, str);
         }
     }//while
 
     cout << "Массив в формате JSON:"<< endl;
-    cout << json_object_to_json_string_ext(JsonObjArrayMain, JSON_C_TO_STRING_SPACED | JSON_C_TO_STRING_PRETTY) << endl;
-
-    json_object_put(JsonObjArrayMain);
-    for(auto it : JsonObjArraySub)
-        json_object_put(it);
-
+    cout << json_object_to_json_string_ext(JsonP.getArrayMain(), JSON_C_TO_STRING_SPACED | JSON_C_TO_STRING_PRETTY) << endl;
 
     return 0;
 }

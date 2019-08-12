@@ -25,9 +25,9 @@ void deleteMultiSpaces(string &str)
         str.pop_back();
 }
 
-void buildJson(json_object *JsonObjArrayMain, json_object *JsonObjArraySub , string &str)
+void buildJson(JsonPack &JsonP, string &str)
 {
-    JsonObjArraySub = json_object_new_array();
+    JsonP.EmplaceArraySub();
 
     static unsigned numberOfInputLine = 1;
     string command = "command"+to_string(numberOfInputLine);
@@ -38,13 +38,13 @@ void buildJson(json_object *JsonObjArrayMain, json_object *JsonObjArraySub , str
     deleteMultiSpaces(str);
 
     string commadWord = str.substr(0,str.find_first_of(' '));
-    json_object_object_add(JsonObjArrayMain, command.data(), json_object_new_string(commadWord.data()));
+    json_object_object_add(JsonP.getArrayMain(), command.data(), json_object_new_string(commadWord.data()));
 
     string argumetsWords = str.substr(str.find_first_of(' ')+1);
 
-    GetAllWords(JsonObjArraySub,argumetsWords);
+    GetAllWords(JsonP.getArraySub(),argumetsWords);
 
-    json_object_object_add(JsonObjArrayMain, arguments.data(), JsonObjArraySub);
+    json_object_object_add(JsonP.getArrayMain(), arguments.data(), JsonP.getArraySub());
 }
 
 bool isExit(const string& str) {
