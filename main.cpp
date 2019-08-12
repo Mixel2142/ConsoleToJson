@@ -21,7 +21,8 @@ int main(int argc, char *argv[])
     while (1) {
         input_line = readline("Ввод> ");
 
-        if (*input_line != NULL ) {
+
+        if (isNotEmpty(input_line)) {
             add_history(input_line);
 
             string str(input_line);

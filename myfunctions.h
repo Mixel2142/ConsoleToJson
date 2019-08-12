@@ -3,7 +3,6 @@
 
 #include <allheaders.h>
 
-
 using namespace std;
 
 class JsonPack;
@@ -15,5 +14,7 @@ void deleteMultiSpaces(string &str);
 void buildJson(JsonPack &JsonObjArrayMain, string &str);
 
 bool isExit(const string& str);
+
+bool isNotEmpty(const char* str);
 
 #endif // MYFUNCTIONS_H

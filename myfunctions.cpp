@@ -1,4 +1,4 @@
-#include <allheaders.h>
+#include <myfunctions.h>
 
 string GetAllWords(json_object *json_obj,const string &str)
 {
@@ -54,3 +54,20 @@ bool isExit(const string& str) {
 
     return (tmp_str.find("exit") != string::npos && tmp_str.length() == strlen("EXIT"));
 }
+
+bool isNotEmpty(const char* str) {
+    string tmp_str(str);
+
+    return !tmp_str.empty() && count(tmp_str.begin(),tmp_str.end(),' ') != tmp_str.length();
+}
+
+
+
+
+
+
+
+
+
+
+
